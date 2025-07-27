@@ -1,6 +1,4 @@
-/**
- * Authentication middleware for route protection
- */
+
 import { Request, Response, NextFunction } from 'express';
 import { HTTP_STATUS, MESSAGES, USER_ROLES } from '../../../shared/constants';
 

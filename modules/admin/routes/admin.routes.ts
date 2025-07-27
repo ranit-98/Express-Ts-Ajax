@@ -1,6 +1,3 @@
-/**
- * Admin routes configuration
- */
 import { Router } from 'express';
 import { AdminController } from '../controllers/admin.controller';
 import { requireAuth, requireAdmin } from '../../auth/middleware/auth.middleware';

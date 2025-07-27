@@ -1,6 +1,4 @@
-/**
- * Product module type definitions
- */
+
 export interface ProductCreateRequest {
   name: string;
   description: string;

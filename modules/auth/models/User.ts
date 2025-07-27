@@ -1,6 +1,4 @@
-/**
- * User model for MongoDB
- */
+
 import { Schema, model, Document, Types } from "mongoose";
 import bcrypt from "bcryptjs";
 

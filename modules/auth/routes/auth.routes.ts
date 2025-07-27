@@ -1,6 +1,4 @@
-/**
- * Authentication routes configuration
- */
+
 import { Router } from 'express';
 import { AuthController } from '../controllers/auth.controller';
 import { validateRequest } from '../../../shared/middleware/validation.middleware';

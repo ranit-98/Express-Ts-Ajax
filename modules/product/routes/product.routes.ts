@@ -1,6 +1,4 @@
-/**
- * Product routes configuration
- */
+
 import { Router } from 'express';
 import { ProductController } from '../controllers/product.controller';
 import { validateRequest } from '../../../shared/middleware/validation.middleware';

@@ -1,6 +1,4 @@
-/**
- * Product model for MongoDB
- */
+
 import { Schema, model, Document } from 'mongoose';
 import { Helpers } from '../../../shared/utils/helpers';
 

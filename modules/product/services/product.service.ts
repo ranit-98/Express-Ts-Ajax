@@ -1,6 +1,4 @@
-/**
- * Product business logic service
- */
+
 import { ProductRepository } from '../repositories/product.repository';
 import { ProductCreateRequest, ProductUpdateRequest, ProductFilter } from '../types/product.types';
 import { createError } from '../../../shared/middleware/error.middleware';

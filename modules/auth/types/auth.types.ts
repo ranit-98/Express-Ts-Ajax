@@ -1,6 +1,4 @@
-/**
- * Authentication module type definitions
- */
+
 export interface LoginRequest {
   email: string;
   password: string;

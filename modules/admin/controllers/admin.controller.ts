@@ -1,6 +1,3 @@
-/**
- * Admin controller handling HTTP requests
- */
 import { Request, Response, NextFunction } from 'express';
 import { AdminService } from '../services/admin.service';
 import { ProductService } from '../../product/services/product.service';

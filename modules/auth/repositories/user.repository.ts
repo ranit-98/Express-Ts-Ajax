@@ -1,6 +1,4 @@
-/**
- * User repository for database operations
- */
+
 import { User, IUser } from '../models/User';
 import { FilterQuery, UpdateQuery } from 'mongoose';
 

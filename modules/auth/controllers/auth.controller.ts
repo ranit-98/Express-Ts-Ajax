@@ -1,6 +1,4 @@
-/**
- * Authentication controller handling HTTP requests
- */
+
 import { Request, Response, NextFunction } from 'express';
 import { AuthService } from '../services/auth.service';
 import { LoginRequest, RegisterRequest } from '../types/auth.types';

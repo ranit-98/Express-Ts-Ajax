@@ -1,6 +1,4 @@
-/**
- * Product repository for database operations
- */
+
 import { Product, IProduct } from '../models/Product';
 import { FilterQuery, UpdateQuery } from 'mongoose';
 import { ProductFilter } from '../types/product.types';

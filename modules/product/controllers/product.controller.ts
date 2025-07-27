@@ -1,6 +1,4 @@
-/**
- * Product controller handling HTTP requests
- */
+
 import { Request, Response, NextFunction } from 'express';
 import { ProductService } from '../services/product.service';
 import { ProductCreateRequest, ProductUpdateRequest, ProductFilter } from '../types/product.types';

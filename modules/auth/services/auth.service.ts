@@ -1,6 +1,4 @@
-/**
- * Authentication business logic service
- */
+
 import jwt from 'jsonwebtoken';
 import { UserRepository } from '../repositories/user.repository';
 import { LoginRequest, RegisterRequest, AuthResponse, JwtPayload } from '../types/auth.types';
