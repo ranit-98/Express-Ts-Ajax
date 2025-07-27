@@ -1,0 +1,134 @@
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h3">
+                    <i class="fas fa-<%= product ? 'edit' : 'plus' %>"></i> 
+                    <%= product ? 'Edit Product' : 'Add Product' %>
+                </h1>
+                <a href="/products" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Products
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <form id="productForm" <% if (product) { %>data-product-id="<%= product._id %>"<% } %>>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Product Name *</label>
+                                    <input type="text" class="form-control" id="name" name="name" 
+                                           value="<%= product ? product.name : '' %>" required>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="category" class="form-label">Category *</label>
+                                    <select class="form-select" id="category" name="category" required>
+                                        <option value="">Select Category</option>
+                                        <% categories.forEach(cat => { %>
+                                            <option value="<%= cat %>" 
+                                                    <%= product && product.category === cat ? 'selected' : '' %>>
+                                                <%= cat.charAt(0).toUpperCase() + cat.slice(1) %>
+                                            </option>
+                                        <% }) %>
+                                    </select>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description *</label>
+                            <textarea class="form-control" id="description" name="description" 
+                                      rows="4" required><%= product ? product.description : '' %></textarea>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="price" class="form-label">Price ($) *</label>
+                                    <input type="number" class="form-control" id="price" name="price" 
+                                           step="0.01" min="0" value="<%= product ? product.price : '' %>" required>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="stock" class="form-label">Stock Quantity *</label>
+                                    <input type="number" class="form-control" id="stock" name="stock" 
+                                           min="0" value="<%= product ? product.stock : '' %>" required>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Product Image URL</label>
+                            <input type="url" class="form-control" id="image" name="image" 
+                                   value="<%= product ? product.image : '' %>" 
+                                   placeholder="https://example.com/image.jpg">
+                            <div class="form-text">Enter a valid image URL or leave empty for default</div>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <% if (product && product.image) { %>
+                            <div class="mb-3">
+                                <label class="form-label">Current Image</label>
+                                <div>
+                                    <img src="<%= product.image %>" alt="<%= product.name %>" 
+                                         class="img-thumbnail" style="max-width: 200px; max-height: 200px; object-fit: cover;">
+                                </div>
+                            </div>
+                        <% } %>
+                        
+                        <div class="d-flex justify-content-between">
+                            <button type="button" onclick="window.history.back()" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> 
+                                <%= product ? 'Update Product' : 'Create Product' %>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+document.getElementById('image').addEventListener('blur', function() {
+    const imageUrl = this.value.trim();
+    const existingPreview = document.getElementById('imagePreview');
+    
+    if (existingPreview) {
+        existingPreview.remove();
+    }
+    
+    if (imageUrl) {
+        const previewDiv = document.createElement('div');
+        previewDiv.id = 'imagePreview';
+        previewDiv.className = 'mb-3';
+        previewDiv.innerHTML = `
+            <label class="form-label">Image Preview</label>
+            <div>
+                <img src="${imageUrl}" alt="Preview" class="img-thumbnail" 
+                     style="max-width: 200px; max-height: 200px; object-fit: cover;"
+                     onerror="this.parentElement.innerHTML='<small class=\\"text-danger\\">Invalid image URL</small>'">
+            </div>
+        `;
+        
+        this.parentElement.insertAdjacentElement('afterend', previewDiv);
+    }
+});
+</script>
